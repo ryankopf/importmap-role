@@ -16,7 +16,7 @@ module Importmap
           end
         end
     
-        render json: combined_importmap.to_json
+        render json: combined_importmap.to_json(resolver: ApplicationController.helpers)
       end
     end
   end
