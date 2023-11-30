@@ -7,7 +7,7 @@ module Importmap
         Dir.glob(Rails.root.join('config/importmaps/*.rb')).each do |file_path|
           role_name = File.basename(file_path, '.rb')
           
-          if current_user.respond_to?("#{role_name}?") && current_user.public_send("#{role_name}?")
+          if @current_user.respond_to?("#{role_name}?") && @current_user.public_send("#{role_name}?")
             importmap = Importmap::Map.new
             importmap.instance_eval(File.read(file_path))
             combined_importmap.draw do
